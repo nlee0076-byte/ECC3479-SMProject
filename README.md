@@ -20,3 +20,130 @@ I will be utilising OLS regression to answer my research question. OLS regressio
 What kind of data will you use/collect to address your research question?
 
 To address this research question, I would collect data on both cognitive ability and short-form social media exposure and subsequently employment levels. Cognitive processes cannot be directly observed, so they are typically measured using indicators that infer cognitive ability based on established psychological theories. These indicators are often obtained through standardised metrics, such as general intelligence or cognitive performance tests like the Wechsler Intelligence Scale, or other measures of attention, memory, and processing speed. I plan to utilise datasets from Kaggle, containing information on students’ social media usage (e.g screentime), platform preferences, and self-reported academic performance, focusing on time spent on short-form content platforms such as TikTok and Instagram. By comparing measures of cognitive performance with levels of exposure to these platforms, it would be possible to analyse whether higher levels of short-form content consumption are associated with differences in cognitive functioning and potential employment-related outcomes such as productivity or attention.
+
+
+REPOSITORY STRUCTURE
+
+My repository is structured into four main folders - data, SRC, output and docs - alongside my README.md file. The data folder is divided into two key components, raw and clean. The raw data is the original, unmodified dataset, while the clean data consists of processed data that has been refined through code to correct errors, resolve inconsistencies and standardise variables for analysis. The SRC folder contains the Python scripts used for data cleaning. The output folder stores any figures or tables generated from the data, and the docs folder holds project related notes and documentation. Finally, the README.md file includes project instructions as well as a draft of my research question.
+
+HOW TO RUN PROJECT FROM SCRATCH:
+
+1. Install necessary packages. This project utilises Python and Pandas. 
+    Python: Go to python.org/downloads and download Python 3.11 or later. 
+    VS-Code: Go to code.visualstudio.com and download VS Code for your operating system
+    Econometrics Packages: Open VS Code’s integrated terminal and run: “pip install pandas’ 
+        Verify with: python -c "import pandas, statsmodels, linearmodels; print('all good')"
+
+2. Create project repository in GitHub
+    Sign into GitHub, click New button at top-left of screen to create a new repository
+    Designate an appropriate project name (E.g ECC3479-Project), select add README file and click create repository.
+
+3. Clone the repository to VS Code.
+    Open VS Code. Open the Source Control panel (Ctrl+Shift+G) and click Clone Repository.
+    Under GitHub, select the green Code button and copy the repository URL. Paste the URL into VS Code and select a local folder. Click open when prompted.
+
+4. Create Repository Structure 
+    In VS code, select File → Open Folder (from selected local folder)
+    In the Explorer panel on the left, by right-clicking your main folder (ECC3479-Project), create the following sub-folders
+        data
+        src
+        output
+        docs 
+    Right-click the data folder, and create two sub-folders, raw (unmodified data) and clean (processed data refined through code).
+
+5. Update the README and commit changes
+    In VS Source Control Panel (Ctrl + Shift + G), you will see your changes listed. Stage them by clicking the + next to each file, and enter a short commit message (e.g: establish project structure and README), then click commit.
+    An option to sync changes will appear. Click Sync Changes to upload to GitHub. If this does not appear, hover over the bottom left of the screen and select to Push.
+
+6. Add the raw data set
+    Download dataset from Kaggle, and extract from zipfile (ensure it is a csv file)
+    Drag csv file from Desktop into data/raw.
+    Open VS Source Control Panel (Ctrl + Shift + G); Stage, commit and sync changes.
+
+7. Run data cleaning script - Create a Python script
+    Right-click the SRC file and select New File. Name it clean_data.py. Our objective is to create a clean version of the raw data. 
+    Create a python script that will read raw dataset from data/raw and save the clean output to data/clean without overwriting the file.
+        Your script should: Rename any unclear variable names, rectify any obvious data quality issues (e.g: missing values and inconsistent coding) and save the cleaned output without overwriting the raw file.
+    
+    Order of Script utilised in this file (clean_data.py): 
+mport pandas as pd
+
+
+print("Starting data cleaning...")
+
+
+# Load raw data
+df = pd.read_csv("data/raw/Students Social Media Addiction.csv")
+
+
+print(f"Loaded {len(df)} rows")
+
+
+# ---- CLEANING ----
+
+
+# 1. Rename columns (make them consistent and clear)
+df.columns = df.columns.str.lower().str.strip().str.replace(" ", "_")
+
+
+print("Columns renamed:", list(df.columns))
+
+
+# 2. Check missing values
+print("Missing values:\n", df.isnull().sum())
+
+
+# Drop missing values (simple approach)
+df = df.dropna()
+
+
+print(f"After dropping missing: {len(df)} rows")
+
+
+# 3. Fix inconsistent text (example: lowercase categories)
+if "most_used_platform" in df.columns:
+   df["most_used_platform"] = df["most_used_platform"].str.lower().str.strip()
+   print("Most used platform lowercased")
+
+
+# 4. Filter age group (18–30)
+if "age" in df.columns:
+   df = df[(df["age"] >= 18) & (df["age"] <= 30)]
+   print(f"After age filter: {len(df)} rows")
+
+
+# 5. Create usage categories (optional but good)
+if "avg_daily_usage_hours" in df.columns:
+   df["usage_group"] = pd.cut(
+       df["avg_daily_usage_hours"],
+       bins=[0, 2, 4, 10],
+       labels=["low", "medium", "high"]
+   )
+   print("Usage group added")
+
+
+# ---- SAVE CLEAN DATA ----
+
+
+df.to_csv("data/clean/cleaned_social_media.csv", index=False)
+
+
+print("✅ Cleaned dataset saved to data/clean/")
+
+8.Locate Cleaned Dataset in data/clean.
+
+Data Codebook
+Student_ID: Student identification number
+Age: Age of respondent (years)
+Gender: Gender of respondent 
+Academic_level: Education level (school, college, university, etc.)
+Country: Country of the student
+Avg_daily_usage_hours: Time spent on social media (hours)
+Most_used_platform: Social media platform used the most
+Affects_academic_performance: Whether social media affects studies (Yes/No)
+Sleep_hours_per_night: Average sleeping hours per night
+Mental_health_score: Score indicating mental health condition
+Relationship_status: Single/In relationship/Other
+Addicted_score: How addicted they are to social media (measured/10)
+
+
