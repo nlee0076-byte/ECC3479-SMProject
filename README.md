@@ -48,7 +48,7 @@ ECC3479-SMProject/
 
 The following steps must be completed manually before running the project:
 
-1. Download the dataset from Kaggle.
+1. Download the dataset from Kaggle: https://www.kaggle.com/datasets/zahranusratt/student-social-media-addiction-analysis-dataset
 2. Extract the dataset from the downloaded ZIP file.
 3. Place the CSV file into your own directory
 
