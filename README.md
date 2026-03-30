@@ -26,21 +26,22 @@ To address this research question, I would collect data on both cognitive abilit
 
 My repository is structured into four main folders - data, SRC, output and docs - alongside my README.md file. The data folder is divided into two key components, raw and clean. The raw data is the original, unmodified dataset, while the clean data consists of processed data that has been refined through code to correct errors, resolve inconsistencies and standardise variables for analysis. The SRC folder contains the Python scripts used for data cleaning. The output folder stores any figures or tables generated from the data, and the docs folder holds project related notes and documentation. Finally, the README.md file includes project instructions as well as a draft of my research question.
 
+```
 ECC3479-SMProject/
 ├── code/
-│ └── clean_data.py ← script to clean raw dataset
+│   └── clean_data.py              ← script to clean raw dataset
 ├── data/
-│ ├── raw/
-│ │ └── Students Social Media Addiction.csv ← original dataset (unchanged)
-│ └── clean/
-│ └── cleaned_social_media.csv ← cleaned dataset produced by code
-├── outputs/ ← optional outputs (figures/tables)
-│ └── placeholder.txt
-├── docs/ ← notes/documentation
-│ └── placeholder.txt
-├── requirements.txt ← Python dependencies (e.g. pandas)
-└── README.md ← project description and instructions
-
+│   ├── raw/
+│   │   └── Students Social Media Addiction.csv
+│   └── clean/
+│       └── cleaned_social_media.csv
+├── outputs/
+│   └── placeholder.txt
+├── docs/
+│   └── placeholder.txt
+├── requirements.txt
+└── README.md
+```
 # HOW TO RUN PROJECT FROM SCRATCH:
 
 ## 1. Install necessary packages. This project utilises Python and Pandas. 
