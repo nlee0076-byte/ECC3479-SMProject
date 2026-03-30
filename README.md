@@ -97,14 +97,14 @@ print(f"Loaded {len(df)} rows")
 # ---- CLEANING ----
 
 
-# 1. Rename columns (make them consistent and clear)
+# 7.1 Rename columns (make them consistent and clear)
 df.columns = df.columns.str.lower().str.strip().str.replace(" ", "_")
 
 
 print("Columns renamed:", list(df.columns))
 
 
-# 2. Check missing values
+# 7.2 Check missing values
 print("Missing values:\n", df.isnull().sum())
 
 
@@ -115,19 +115,19 @@ df = df.dropna()
 print(f"After dropping missing: {len(df)} rows")
 
 
-# 3. Fix inconsistent text (example: lowercase categories)
+# 7.3 Fix inconsistent text (example: lowercase categories)
 if "most_used_platform" in df.columns:
    df["most_used_platform"] = df["most_used_platform"].str.lower().str.strip()
    print("Most used platform lowercased")
 
 
-# 4. Filter age group (18–30)
+# 7.4 Filter age group (18–30)
 if "age" in df.columns:
    df = df[(df["age"] >= 18) & (df["age"] <= 30)]
    print(f"After age filter: {len(df)} rows")
 
 
-# 5. Create usage categories (optional but good)
+# 7.5 Create usage categories (optional but good)
 if "avg_daily_usage_hours" in df.columns:
    df["usage_group"] = pd.cut(
        df["avg_daily_usage_hours"],
@@ -161,4 +161,13 @@ Mental_health_score: Score indicating mental health condition
 Relationship_status: Single/In relationship/Other
 Addicted_score: How addicted they are to social media (measured/10)
 
+## Datasets
+
+| File | Rows | Description |
+|------|------|------------|
+| Students Social Media Addiction.csv | ~700 | Survey dataset of students’ social media usage and behavioural outcomes. Columns include: student_id, age, gender, academic_level, country, avg_daily_usage_hours, most_used_platform, affects_academic_performance, mental_health_score, sleep_hours. |
+
+The dataset is a survey-based dataset obtained from Kaggle, containing self-reported information on social media usage patterns and academic outcomes among students. 
+
+The cleaned dataset (cleaned_social_media.csv) is generated from the raw dataset using the script in `src/clean_data.py`. The cleaning process standardises variable names, removes missing values, and creates additional variables such as usage_group to categorise daily social media usage.
 
