@@ -152,7 +152,7 @@ if "avg_daily_usage_hours" in df.columns:
 df.to_csv("data/clean/cleaned_social_media.csv", index=False)
 
 
-print("✅ Cleaned dataset saved to data/clean/")
+print("Cleaned dataset saved to data/clean/")
 
 ## 8.Locate Cleaned Dataset in data/clean.
 
