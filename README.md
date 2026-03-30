@@ -148,18 +148,22 @@ print("✅ Cleaned dataset saved to data/clean/")
 # 8.Locate Cleaned Dataset in data/clean.
 
 # Data Codebook
-Student_ID: Student identification number
-Age: Age of respondent (years)
-Gender: Gender of respondent 
-Academic_level: Education level (school, college, university, etc.)
-Country: Country of the student
-Avg_daily_usage_hours: Time spent on social media (hours)
-Most_used_platform: Social media platform used the most
-Affects_academic_performance: Whether social media affects studies (Yes/No)
-Sleep_hours_per_night: Average sleeping hours per night
-Mental_health_score: Score indicating mental health condition
-Relationship_status: Single/In relationship/Other
-Addicted_score: How addicted they are to social media (measured/10)
+## Data Codebook
+
+| Variable | Description |
+|----------|------------|
+| student_id | Student identification number |
+| age | Age of respondent (in years) |
+| gender | Gender of respondent |
+| academic_level | Education level (e.g., school, college, university) |
+| country | Country of the student |
+| avg_daily_usage_hours | Time spent on social media per day (in hours) |
+| most_used_platform | Social media platform used most frequently |
+| affects_academic_performance | Whether social media affects academic performance (Yes/No) |
+| sleep_hours_per_night | Average number of hours slept per night |
+| mental_health_score | Score indicating mental health condition |
+| relationship_status | Relationship status (e.g., single, in relationship, other) |
+| addicted_score | Level of social media addiction (scale from 0 to 10) |
 
 ## Datasets
 
