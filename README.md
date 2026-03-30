@@ -89,8 +89,8 @@ The following steps must be completed manually before running the project:
     Create a python script that will read raw dataset from data/raw and save the clean output to data/clean without overwriting the file.
         Your script should: Rename any unclear variable names, rectify any obvious data quality issues (e.g: missing values and inconsistent coding) and save the cleaned output without overwriting the raw file.
     
-    Order of Script utilised in this file (clean_data.py): 
-mport pandas as pd
+### Order of Script Run utilised in this file (clean_data.py): 
+import pandas as pd
 
 
 print("Starting data cleaning...")
