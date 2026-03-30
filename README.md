@@ -27,7 +27,7 @@ To address this research question, I would collect data on both cognitive abilit
 My repository is structured into four main folders - data, SRC, output and docs - alongside my README.md file. The data folder is divided into two key components, raw and clean. The raw data is the original, unmodified dataset, while the clean data consists of processed data that has been refined through code to correct errors, resolve inconsistencies and standardise variables for analysis. The SRC folder contains the Python scripts used for data cleaning. The output folder stores any figures or tables generated from the data, and the docs folder holds project related notes and documentation. Finally, the README.md file includes project instructions as well as a draft of my research question.
 
 ECC3479-SMProject/
-├── src/
+├── code/
 │   └── clean_data.py              ← script to clean raw dataset
 ├── data/
 │   ├── raw/
@@ -146,23 +146,6 @@ df.to_csv("data/clean/cleaned_social_media.csv", index=False)
 print("✅ Cleaned dataset saved to data/clean/")
 
 ## 8.Locate Cleaned Dataset in data/clean.
-
-### Data Codebook
-
-| Variable | Description |
-|----------|------------|
-| student_id | Student identification number |
-| age | Age of respondent (in years) |
-| gender | Gender of respondent |
-| academic_level | Education level (e.g., school, college, university) |
-| country | Country of the student |
-| avg_daily_usage_hours | Time spent on social media per day (in hours) |
-| most_used_platform | Social media platform used most frequently |
-| affects_academic_performance | Whether social media affects academic performance (Yes/No) |
-| sleep_hours_per_night | Average number of hours slept per night |
-| mental_health_score | Score indicating mental health condition |
-| relationship_status | Relationship status (e.g., single, in relationship, other) |
-| addicted_score | Level of social media addiction (scale from 0 to 10) |
 
 ## Datasets
 
