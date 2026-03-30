@@ -43,21 +43,21 @@ ECC3479-SMProject/
 
 # HOW TO RUN PROJECT FROM SCRATCH:
 
-# 1. Install necessary packages. This project utilises Python and Pandas. 
+## 1. Install necessary packages. This project utilises Python and Pandas. 
     Python: Go to python.org/downloads and download Python 3.11 or later. 
     VS-Code: Go to code.visualstudio.com and download VS Code for your operating system
     Econometrics Packages: Open VS Code’s integrated terminal and run: “pip install pandas’ 
         Verify with: python -c "import pandas, statsmodels, linearmodels; print('all good')"
 
-# 2. Create project repository in GitHub
+## 2. Create project repository in GitHub
     Sign into GitHub, click New button at top-left of screen to create a new repository
     Designate an appropriate project name (E.g ECC3479-Project), select add README file and click create repository.
 
-# 3. Clone the repository to VS Code.
+## 3. Clone the repository to VS Code.
     Open VS Code. Open the Source Control panel (Ctrl+Shift+G) and click Clone Repository.
     Under GitHub, select the green Code button and copy the repository URL. Paste the URL into VS Code and select a local folder. Click open when prompted.
 
-# 4. Create Repository Structure 
+## 4. Create Repository Structure 
     In VS code, select File → Open Folder (from selected local folder)
     In the Explorer panel on the left, by right-clicking your main folder (ECC3479-Project), create the following sub-folders
         data
@@ -66,16 +66,16 @@ ECC3479-SMProject/
         docs 
     Right-click the data folder, and create two sub-folders, raw (unmodified data) and clean (processed data refined through code).
 
-# 5. Update the README and commit changes
+## 5. Update the README and commit changes
     In VS Source Control Panel (Ctrl + Shift + G), you will see your changes listed. Stage them by clicking the + next to each file, and enter a short commit message (e.g: establish project structure and README), then click commit.
     An option to sync changes will appear. Click Sync Changes to upload to GitHub. If this does not appear, hover over the bottom left of the screen and select to Push.
 
-# 6. Add the raw data set
+## 6. Add the raw data set
     Download dataset from Kaggle, and extract from zipfile (ensure it is a csv file)
     Drag csv file from Desktop into data/raw.
     Open VS Source Control Panel (Ctrl + Shift + G); Stage, commit and sync changes.
 
-# 7. Run data cleaning script - Create a Python script
+## 7. Run data cleaning script - Create a Python script
     Right-click the SRC file and select New File. Name it clean_data.py. Our objective is to create a clean version of the raw data. 
     Create a python script that will read raw dataset from data/raw and save the clean output to data/clean without overwriting the file.
         Your script should: Rename any unclear variable names, rectify any obvious data quality issues (e.g: missing values and inconsistent coding) and save the cleaned output without overwriting the raw file.
@@ -87,47 +87,47 @@ mport pandas as pd
 print("Starting data cleaning...")
 
 
-# Load raw data
+### Load raw data
 df = pd.read_csv("data/raw/Students Social Media Addiction.csv")
 
 
 print(f"Loaded {len(df)} rows")
 
 
-# ---- CLEANING ----
+### ---- CLEANING ----
 
 
-# 7.1 Rename columns (make them consistent and clear)
+### 7.1 Rename columns (make them consistent and clear)
 df.columns = df.columns.str.lower().str.strip().str.replace(" ", "_")
 
 
 print("Columns renamed:", list(df.columns))
 
 
-# 7.2 Check missing values
+### 7.2 Check missing values
 print("Missing values:\n", df.isnull().sum())
 
 
-# Drop missing values (simple approach)
+### Drop missing values (simple approach)
 df = df.dropna()
 
 
 print(f"After dropping missing: {len(df)} rows")
 
 
-# 7.3 Fix inconsistent text (example: lowercase categories)
+### 7.3 Fix inconsistent text (example: lowercase categories)
 if "most_used_platform" in df.columns:
    df["most_used_platform"] = df["most_used_platform"].str.lower().str.strip()
    print("Most used platform lowercased")
 
 
-# 7.4 Filter age group (18–30)
+### 7.4 Filter age group (18–30)
 if "age" in df.columns:
    df = df[(df["age"] >= 18) & (df["age"] <= 30)]
    print(f"After age filter: {len(df)} rows")
 
 
-# 7.5 Create usage categories (optional but good)
+### 7.5 Create usage categories (optional but good)
 if "avg_daily_usage_hours" in df.columns:
    df["usage_group"] = pd.cut(
        df["avg_daily_usage_hours"],
@@ -137,7 +137,7 @@ if "avg_daily_usage_hours" in df.columns:
    print("Usage group added")
 
 
-# ---- SAVE CLEAN DATA ----
+### ---- SAVE CLEAN DATA ----
 
 
 df.to_csv("data/clean/cleaned_social_media.csv", index=False)
@@ -145,10 +145,9 @@ df.to_csv("data/clean/cleaned_social_media.csv", index=False)
 
 print("✅ Cleaned dataset saved to data/clean/")
 
-# 8.Locate Cleaned Dataset in data/clean.
+## 8.Locate Cleaned Dataset in data/clean.
 
-# Data Codebook
-## Data Codebook
+### Data Codebook
 
 | Variable | Description |
 |----------|------------|
