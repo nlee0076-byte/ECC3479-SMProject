@@ -44,6 +44,14 @@ ECC3479-SMProject/
 ```
 # HOW TO RUN PROJECT FROM SCRATCH:
 
+## Manual Steps Outside of the Code
+
+The following steps must be completed manually before running the project:
+
+1. Download the dataset from Kaggle.
+2. Extract the dataset from the downloaded ZIP file.
+3. Place the CSV file into your own directory
+
 ## 1. Install necessary packages. This project utilises Python and Pandas. 
     Python: Go to python.org/downloads and download Python 3.11 or later. 
     VS-Code: Go to code.visualstudio.com and download VS Code for your operating system
@@ -72,7 +80,7 @@ ECC3479-SMProject/
     An option to sync changes will appear. Click Sync Changes to upload to GitHub. If this does not appear, hover over the bottom left of the screen and select to Push.
 
 ## 6. Add the raw data set
-    Download dataset from Kaggle, and extract from zipfile (ensure it is a csv file)
+    Import dataset from Kaggle: Extract from zipfile (ensure it is a csv file)
     Drag csv file from Desktop into data/raw.
     Open VS Source Control Panel (Ctrl + Shift + G); Stage, commit and sync changes.
 
