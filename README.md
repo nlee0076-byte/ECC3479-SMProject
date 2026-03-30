@@ -70,7 +70,7 @@ The following steps must be completed manually before running the project:
     In VS code, select File → Open Folder (from selected local folder)
     In the Explorer panel on the left, by right-clicking your main folder (ECC3479-Project), create the following sub-folders
         data
-        src
+        code
         output
         docs 
     Right-click the data folder, and create two sub-folders, raw (unmodified data) and clean (processed data refined through code).
@@ -84,77 +84,16 @@ The following steps must be completed manually before running the project:
     Drag csv file from Desktop into data/raw.
     Open VS Source Control Panel (Ctrl + Shift + G); Stage, commit and sync changes.
 
-## 7. Run data cleaning script - Create a Python script
-    Right-click the SRC file and select New File. Name it clean_data.py. Our objective is to create a clean version of the raw data. 
+## 7. Create a clean version of raw data
+    Right-click the code file and select New File. Name it clean_data.py. Our objective is to create a clean version of the raw data. 
     Create a python script that will read raw dataset from data/raw and save the clean output to data/clean without overwriting the file.
         Your script should: Rename any unclear variable names, rectify any obvious data quality issues (e.g: missing values and inconsistent coding) and save the cleaned output without overwriting the raw file.
+
+## 8. Run data cleaning script - Run Order of Script utilised in this file (clean_data.py)
+     Run clean_data.py
     
-### Order of Script Run utilised in this file (clean_data.py): 
-import pandas as pd
 
-
-print("Starting data cleaning...")
-
-
-### Load raw data
-df = pd.read_csv("data/raw/Students Social Media Addiction.csv")
-
-
-print(f"Loaded {len(df)} rows")
-
-
-### ---- CLEANING ----
-
-
-### 7.1 Rename columns (make them consistent and clear)
-df.columns = df.columns.str.lower().str.strip().str.replace(" ", "_")
-
-
-print("Columns renamed:", list(df.columns))
-
-
-### 7.2 Check missing values
-print("Missing values:\n", df.isnull().sum())
-
-
-### Drop missing values (simple approach)
-df = df.dropna()
-
-
-print(f"After dropping missing: {len(df)} rows")
-
-
-### 7.3 Fix inconsistent text (example: lowercase categories)
-if "most_used_platform" in df.columns:
-   df["most_used_platform"] = df["most_used_platform"].str.lower().str.strip()
-   print("Most used platform lowercased")
-
-
-### 7.4 Filter age group (18–30)
-if "age" in df.columns:
-   df = df[(df["age"] >= 18) & (df["age"] <= 30)]
-   print(f"After age filter: {len(df)} rows")
-
-
-### 7.5 Create usage categories (optional but good)
-if "avg_daily_usage_hours" in df.columns:
-   df["usage_group"] = pd.cut(
-       df["avg_daily_usage_hours"],
-       bins=[0, 2, 4, 10],
-       labels=["low", "medium", "high"]
-   )
-   print("Usage group added")
-
-
-### ---- SAVE CLEAN DATA ----
-
-
-df.to_csv("data/clean/cleaned_social_media.csv", index=False)
-
-
-print("Cleaned dataset saved to data/clean/")
-
-## 8.Locate Cleaned Dataset in data/clean.
+## 9.Locate Cleaned Dataset in data/clean.
 
 ## Datasets
 
