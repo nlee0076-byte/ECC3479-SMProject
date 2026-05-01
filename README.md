@@ -105,3 +105,29 @@ The dataset is a survey-based dataset obtained from Kaggle, containing self-repo
 
 The cleaned dataset (cleaned_social_media.csv) is generated from the raw dataset using the script in `src/clean_data.py`. The cleaning process standardises variable names, removes missing values, and creates additional variables such as usage_group to categorise daily social media usage.
 
+## RUN REGRESSION
+
+Running `analysis.ipynb` will produce regression results and visualisations used in the analysis.
+###  Analysis Overview
+
+The primary analysis is descriptive, not causal. It examines the relationship between social media usage and academic performance.
+
+A logit regression model is estimated where the dependent variable is whether social media affects academic performance. The key explanatory variable is average daily usage hours, with controls for age, sleep, gender, and academic level.
+
+Results indicate that higher social media usage is strongly associated with a greater likelihood of reporting negative academic impacts. However, the results should not be interpreted causally due to potential omitted variables and reverse causality.
+
+### Econometric Specification
+
+The following model is estimated:
+
+affects_academic_performance = β₀ + β₁(usage) + β₂(age) + β₃(sleep) + β₄(gender) + β₅(academic level) + ε
+
+A logit model is used due to the binary dependent variable. Control variables are included to reduce confounding and isolate the association between social media usage and academic outcomes.
+
+### Limitations
+
+The analysis is observational and may suffer from omitted variable bias. Factors such as personality, study habits, or time management are not observed and may influence both social media usage and academic outcomes.
+
+Reverse causality may also be present, where students struggling academically may use social media differently.
+
+
