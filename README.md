@@ -130,4 +130,33 @@ The analysis is observational and may suffer from omitted variable bias. Factors
 
 Reverse causality may also be present, where students struggling academically may use social media differently.
 
+## RUN ROBUSTNESS ANALYSIS
+
+Running `robustness_analysis.py` will reproduce all robustness and sensitivity checks used in the project.
+
+The robustness analysis includes:
+- Alternative control specifications
+- Removal of outliers using the IQR method
+- Undergraduate-only subsample analysis
+- Linear probability model estimation
+- Logarithmic specification of usage hours
+- Quadratic functional form testing
+
+### Robustness Findings
+
+The main result remains positive and statistically significant across most alternative specifications. The coefficient on average daily social media usage remains stable after adding or removing controls, excluding outliers, and restricting the sample to undergraduate students.
+
+The result also survives alternative estimation methods such as the linear probability model and log specification. However, the quadratic specification becomes statistically insignificant, suggesting that the relationship between social media usage and academic performance may become nonlinear at higher levels of usage.
+
+Overall, the robustness checks strengthen the credibility of the primary descriptive finding that higher social media usage is associated with a greater likelihood of negative academic performance effects.
+
+### Robustness Outputs
+
+Running `robustness_analysis.py` generates:
+- robustness_regression_table.csv
+- robustness_regression_table.md
+- robustness_analysis_viz.png
+- sensitivity_analysis.csv
+
+These files are saved in the `output/` folder.
 
