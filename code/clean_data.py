@@ -1,4 +1,5 @@
 import pandas as pd
+from pathlib import Path
 
 print("Starting data cleaning...")
 
@@ -44,5 +45,27 @@ if "avg_daily_usage_hours" in df.columns:
 # ---- SAVE CLEAN DATA ----
 
 df.to_csv("data/clean/cleaned_social_media.csv", index=False)
-
 print("✅ Cleaned dataset saved to data/clean/")
+
+# ---- SUMMARY STATISTICS ----
+output_dir = Path("output")
+output_dir.mkdir(parents=True, exist_ok=True)
+
+numeric_summary = df.select_dtypes(include=["number"]).describe().T
+numeric_summary = numeric_summary[["count", "mean", "std", "min", "25%", "50%", "75%", "max"]].round(2)
+
+numeric_summary.to_csv(output_dir / "clean_data_summary.csv")
+
+# Write a markdown table without requiring optional dependencies
+md = numeric_summary.reset_index().rename(columns={"index": "variable"})
+columns = md.columns.tolist()
+header = "| " + " | ".join(columns) + " |\n"
+separator = "| " + " | ".join(["---"] * len(columns)) + " |\n"
+rows = ["| " + " | ".join(str(value) for value in row) + " |" for row in md.values.tolist()]
+with open(output_dir / "clean_data_summary.md", "w", encoding="utf-8") as md_file:
+    md_file.write("# Clean Data Summary Statistics\n\n")
+    md_file.write(header)
+    md_file.write(separator)
+    md_file.write("\n".join(rows) + "\n")
+
+print("✅ Summary statistics saved to output/clean_data_summary.csv and output/clean_data_summary.md")
