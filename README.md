@@ -160,3 +160,32 @@ Running `robustness_analysis.py` generates:
 
 These files are saved in the `output/` folder.
 
+# Replication Package
+
+This repository contains all files needed to reproduce the numerical results in the report.
+
+## Data
+
+The original data come from the Kaggle dataset: Student Social Media Addiction Analysis Dataset.
+
+The cleaned dataset used in the report is stored in:
+
+- `data/cleaned_data.csv`
+
+Cleaning steps are performed in:
+
+- `code/clean_data.py`
+
+
+## Mapping of Tables and Figures
+
+| Report item | Produced by |
+|---|---|
+| Table 1: Summary Statistics for Key Variables | `code/clean_data.py`
+| Table 2: Logit Regression Results | `code/analysis.ipynb` |
+| Table 3: Robustness Check – Main Explanatory Variable | `code/robustness_analysis.py` |
+| Appendix Table 1: Sensitivity Analysis | `code/analysis.ipynb` |
+| Appendix table 2: Average Daily Usage vs Mental Health Score (Usage groups) | `code/eda.ipynb` |
+| Appendix table 3: Predicted Probabilities (Baseline Model)| `code/robustness_analysis.py` |
+
+
